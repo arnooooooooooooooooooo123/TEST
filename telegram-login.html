@@ -67,7 +67,10 @@
             // } 
             
             function onTelegramAuth(user) { 
-                window.parent.postMessage('success', user)
+                window.parent.postMessage({
+                    type: 'success',
+                    data: user
+                }, '*')
                 // 向app传参
                 if(window.flutter_inappwebview){
                     window.flutter_inappwebview.callHandler('NativeBridge', user);
