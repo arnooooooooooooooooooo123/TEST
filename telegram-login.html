@@ -24,11 +24,17 @@
             document.getElementById('btn').onclick = function() {
                 Telegram.Login.open();
             }
-        };   
+            
+        };  
+        // 打开弹窗
+        function openLogin()  {
+            Telegram.Login.open();
+        }
          
         function onTelegramAuth(user) { 
-            console.log('callback', user)
-            window.flutter_inappwebview.callHandler('NativeBridge', user);
+            if(window.flutter_inappwebview){
+                window.flutter_inappwebview.callHandler('NativeBridge', user);
+            }
         }
     </script>
 </body>
