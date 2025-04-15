@@ -52,8 +52,10 @@
             }
             // 推出登录
             function logout() {
-                deleteCookie('stel_ssid')
-                deleteCookie('stel_token')
+                localStorage.clear();
+                sessionStorage.clear();
+                deleteCookie('stel_ssid');
+                deleteCookie('stel_token');
             }
             
             function onTelegramAuth(user) { 
