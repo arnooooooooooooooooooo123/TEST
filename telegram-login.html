@@ -14,7 +14,7 @@
    <script type="text/javascript"> 
 
         window.onload = function() { 
-
+            var user;
              // 删除 cookie
             function deleteCookie(name, path, domain) {
                 // 设置 Cookie 的过期时间为过去的时间
@@ -33,6 +33,7 @@
             Telegram.Login.init({bot_id: 8126791498, "request-access": "write"}, function(user) {
                 console.log('init', user)
                 if (user) {
+                    user = user;
                     onTelegramAuth(user)
                 }
             }); 
@@ -56,7 +57,9 @@
             // ... existing code ...
             function logout() {
             console.log(Telegram.Login.auth.checkClose)
-            location.href = 'https://oauth.telegram.org/auth/logout?bot_id=8126791498&origin=https://arnooooooooooooooooooo123.github.io&return_to=https://arnooooooooooooooooooo123.github.io/TEST/telegram-login.html&embed=1'
+            
+            // '/auth/logout?bot_id=547043436&origin=https%3A%2F%2Fcore.telegram.org&embed=1&request_access=write&return_to=https%3A%2F%2Fcore.telegram.org%2Fwidgets%2Flogin&hash=ea162c4fc040f291b3'
+            location.href = 'https://oauth.telegram.org/auth/logout?bot_id=8126791498&origin=https://arnooooooooooooooooooo123.github.io&return_to=https://arnooooooooooooooooooo123.github.io/TEST/telegram-login.html&embed=1&request_access=write&hash=' + user.hash
             // console.log("Starting logout...");
                 // console.log("Clearing localStorage...");
                 // localStorage.clear();
