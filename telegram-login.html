@@ -37,13 +37,14 @@
                 }
             }); 
 
+
             document.getElementById('btn').onclick = function() {
                 openLogin()
             }   
             document.getElementById('logout').onclick = function() {
                 logout()
             }   
-            console.log(Telegram)         
+            console.log(Telegram.Login.logout)         
 
             // 打开弹窗
             function openLogin()  {     
@@ -53,18 +54,20 @@
             // 退出登录
             // ... existing code ...
             function logout() {
-                console.log("Starting logout...");
-                console.log("Clearing localStorage...");
-                localStorage.clear();
-                console.log("Clearing sessionStorage...");
-                sessionStorage.clear();
-                console.log("Deleting telegram cookies...");
-                deleteCookie('stel_ssid', '/', '.telegram.org');
-                deleteCookie('stel_token', '/', '.telegram.org');
-                console.log("Logout complete");
+            console.log(Telegram.Login.auth.checkClose)
+            location.href = 'https://oauth.telegram.org/auth/logout?bot_id=8126791498&origin=https://arnooooooooooooooooooo123.github.io/TEST/telegram-login.html'
+            // console.log("Starting logout...");
+                // console.log("Clearing localStorage...");
+                // localStorage.clear();
+                // console.log("Clearing sessionStorage...");
+                // sessionStorage.clear();
+                // console.log("Deleting telegram cookies...");
+                // deleteCookie('stel_ssid', '/', '.telegram.org');
+                // deleteCookie('stel_token', '/', '.telegram.org');
+                // console.log("Logout complete");
                 
-                deleteCookie('stel_ssid', '/', '.github.io');
-                deleteCookie('stel_token', '/', '.github.io');
+                // deleteCookie('stel_ssid', '/', '.github.io');
+                // deleteCookie('stel_token', '/', '.github.io');
             }
             // ... existing code ...
             
