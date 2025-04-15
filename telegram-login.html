@@ -30,7 +30,13 @@
             }
 
         
-            Telegram.Login.init({bot_id: 8126791498, "request-access": "write"}); 
+            Telegram.Login.init({bot_id: 8126791498, "request-access": "write"}, function(user) {
+                console.log('init', user)
+                if (user) {
+                    user = user;
+                    onTelegramAuth(user)
+                }
+            }); 
 
 
             document.getElementById('btn').onclick = function() {
@@ -44,7 +50,7 @@
             // 打开弹窗
             function openLogin()  {     
                 console.log("openLogin")            
-                Telegram.Login.auth({bot_id: 8126791498});
+                Telegram.Login.open();
             } 
             
             // 退出登录
