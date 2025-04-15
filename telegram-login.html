@@ -42,9 +42,20 @@
             // }        
 
             // 打开弹窗
-            function openLogin()  {     
-                console.log("openLogin", Telegram.Login)            
-                Telegram.Login.open();
+            function openLogin() {
+                console.log("Telegram object:", Telegram);
+                console.log("Telegram.Login:", Telegram.Login);
+                
+                if (!Telegram || !Telegram.Login) {
+                    console.error("Telegram.Login is not initialized yet");
+                    return;
+                }
+                
+                try {
+                    Telegram.Login.open();
+                } catch (error) {
+                    console.error("Error opening Telegram login:", error);
+                }
             } 
             
             // 退出登录
@@ -72,3 +83,4 @@
  
 </body>
 </html>
+ 
