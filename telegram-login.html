@@ -9,9 +9,9 @@
  
     <button id="btn">login</button>
     <button id="logout">logout</button>
-    <script async src="https://telegram.org/js/telegram-widget.js?22" data-onauth="onTelegramAuth(user)" data-request-access="write"></script>
-   
-   <script type="text/javascript"> 
+    <!-- <script async src="https://telegram.org/js/telegram-widget.js?22" data-onauth="onTelegramAuth(user)" data-request-access="write"></script> -->
+    <script async src="https://telegram.org/js/widget-frame.js?63"></script>
+   <!-- <script type="text/javascript"> 
 
         window.onload = function() { 
             var user;
@@ -59,7 +59,7 @@
                 console.log(Telegram.Login.auth.checkClose)
                 console.log(user)
                 // '/auth/logout?bot_id=547043436&origin=https%3A%2F%2Fcore.telegram.org&embed=1&request_access=write&return_to=https%3A%2F%2Fcore.telegram.org%2Fwidgets%2Flogin&hash=ea162c4fc040f291b3'
-                location.href = 'https://oauth.telegram.org/auth/logout?bot_id=8126791498&origin=https://arnooooooooooooooooooo123.github.io&return_to=https://arnooooooooooooooooooo123.github.io/TEST/telegram-login.html&embed=1&request_access=write&hash="1612de073c08cbe1d98012f023a3535e9e7161d172cdd60c1cb85a5f4ab029ab"'
+                // location.href = 'https://oauth.telegram.org/auth/logout?bot_id=8126791498&origin=https://arnooooooooooooooooooo123.github.io&return_to=https://arnooooooooooooooooooo123.github.io/TEST/telegram-login.html&embed=1&request_access=write&hash="1612de073c08cbe1d98012f023a3535e9e7161d172cdd60c1cb85a5f4ab029ab"'
             // console.log("Starting logout...");
                 // console.log("Clearing localStorage...");
                 // localStorage.clear();
@@ -93,6 +93,19 @@
             });
         };  
         
+    </script> -->
+
+    <script>
+        window.onload = function() {
+            console.log(TWidgetLogin)
+
+            TWidgetLogin.init('widget_login', 8126791498, {"origin":"https://arnooooooooooooooooooo123.github.io/","embed":1,"request_access":"write","return_to":"https://arnooooooooooooooooooo123.github.io/TEST/telegram-login.html#"}, false);
+
+
+            document.getElementById('btn').onclick = function() {
+                TWidgetLogin.auth()
+            }
+        }
     </script>
 </body>
 </html>
