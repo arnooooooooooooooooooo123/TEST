@@ -49,14 +49,14 @@
             function openLogin()  {     
                 console.log("openLogin")            
                 Telegram.Login.open();
-            }
-            // 推出登录
+            } 
+            // 退出登录
             function logout() {
                 localStorage.clear();
                 sessionStorage.clear();
-                deleteCookie('stel_ssid');
-                deleteCookie('stel_token');
-            }
+                deleteCookie('stel_ssid', '/', '.telegram.org');
+                deleteCookie('stel_token', '/', '.telegram.org');
+            } 
             
             function onTelegramAuth(user) { 
                 // 向app传参
