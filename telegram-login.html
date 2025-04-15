@@ -15,13 +15,11 @@
         window.onload = function() { 
 
             Telegram.Login.init({bot_id: 8126791498, "request-access": "write"}, function(user) {
-                console.log("user", user)
+                console.log('init', user)
                 if (user) {
-                    console.log(user)
+                    onTelegramAuth(user)
                 }
-            });
-
-            console.log(Telegram.Login)
+            }); 
 
             document.getElementById('btn').onclick = function() {
                 Telegram.Login.open();
@@ -29,7 +27,7 @@
         };   
          
         function onTelegramAuth(user) { 
-            console.log(user)
+            console.log('callback', user)
             window.flutter_inappwebview.callHandler('NativeBridge', user);
         }
     </script>
