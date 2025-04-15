@@ -8,12 +8,28 @@
 <body>
  
     <button id="btn">login</button>
+    <button id="logout">logout</button>
     <script async src="https://telegram.org/js/telegram-widget.js?22" data-onauth="onTelegramAuth(user)" data-request-access="write"></script>
    
    <script type="text/javascript"> 
 
         window.onload = function() { 
 
+             // 删除 cookie
+            function deleteCookie(name, path, domain) {
+                // 设置 Cookie 的过期时间为过去的时间
+                let expires = '; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+                if (path) {
+                    expires += ` path=${path};`
+                }
+                if (domain) {
+                    expires += ` domain=${domain};`
+                }
+                // 删除 Cookie
+                document.cookie = `${name}=${expires}`
+            }
+
+        
             Telegram.Login.init({bot_id: 8126791498, "request-access": "write"}, function(user) {
                 console.log('init', user)
                 if (user) {
@@ -22,20 +38,42 @@
             }); 
 
             document.getElementById('btn').onclick = function() {
+                
+            }   
+            document.getElementById('logout').onclick = function() {
+                logout
+            }   
+            console.log(Telegram)         
+
+            // 打开弹窗
+            function openLogin()  {     
+                console.log("openLogin")            
                 Telegram.Login.open();
             }
-            
-        };  
-        // 打开弹窗
-        function openLogin()  {
-            Telegram.Login.open();
-        }
-         
-        function onTelegramAuth(user) { 
-            if(window.flutter_inappwebview){
-                window.flutter_inappwebview.callHandler('NativeBridge', user);
+            // 推出登录
+            function logout() {
+                deleteCookie('stel_ssid')
+                deleteCookie('stel_token')
             }
-        }
+            
+            function onTelegramAuth(user) { 
+                // 向app传参
+                if(window.flutter_inappwebview){
+                    window.flutter_inappwebview.callHandler('NativeBridge', user);
+                }
+            }
+
+            // 接受 user信息
+            window.addEventListener('message', (event) => {
+            // 验证来源
+                if (event.origin === 'http://your-parent-page.com') { // 替换为父页面的真实 origin
+                    console.log('Message from parent:', event.data);
+                    // 可以选择响应父页面
+                    event.source.postMessage('Hello from child!', event.origin);
+                }
+            });
+        };  
+        
     </script>
 </body>
 </html>
