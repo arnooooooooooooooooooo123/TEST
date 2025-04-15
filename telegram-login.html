@@ -29,7 +29,6 @@
             Telegram.Login.init({bot_id: 8126791498, "request-access": "write"}, function(user) {
                 console.log('init', user)
                 if (user) {
-                    user = user;
                     onTelegramAuth(user)
                 }
             }); 
@@ -57,12 +56,12 @@
             // } 
             
             function onTelegramAuth(user) { 
+                window.parent.postMessage('success', user)
                 // 向app传参
                 if(window.flutter_inappwebview){
                     window.flutter_inappwebview.callHandler('NativeBridge', user);
                 }
                 // 向父页面传参
-                window.parent.postMessage('success', user)
             }
 
             
