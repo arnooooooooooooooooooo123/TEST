@@ -9,9 +9,9 @@
  
     <button id="btn">login</button>
     <button id="logout">logout</button>
-    <!-- <script async src="https://telegram.org/js/telegram-widget.js?22" data-onauth="onTelegramAuth(user)" data-request-access="write"></script> -->
-    <script async src="https://telegram.org/js/widget-frame.js?63"></script>
-   <!-- <script type="text/javascript"> 
+    <script async src="https://telegram.org/js/telegram-widget.js?22" data-onauth="onTelegramAuth(user)" data-request-access="write"></script>
+    <!-- <script async src="https://telegram.org/js/widget-frame.js?63"></script> -->
+   <script type="text/javascript"> 
 
         window.onload = function() { 
             var user;
@@ -30,13 +30,7 @@
             }
 
         
-            Telegram.Login.init({bot_id: 8126791498, "request-access": "write"}, function(user) {
-                console.log('init', user)
-                if (user) {
-                    user = user;
-                    onTelegramAuth(user)
-                }
-            }); 
+            Telegram.Login.init({bot_id: 8126791498, "request-access": "write"}); 
 
 
             document.getElementById('btn').onclick = function() {
@@ -93,19 +87,19 @@
             });
         };  
         
-    </script> -->
+    </script>
 
-    <script>
+    <!-- <script>
         window.onload = function() {
             console.log(TWidgetLogin)
 
 
-            TWidgetLogin.init('widget_login', 8126791498, {"origin":"https:\/\/core.telegram.org","embed":1,"request_access":"write","return_to":"https:\/\/core.telegram.org\/widgets\/login"}, false);
+            TWidgetLogin.init('widget_login', 8126791498, {"request_access":"write"}, false);
 
             document.getElementById('btn').onclick = function() {
                 TWidgetLogin.auth()
             }
         }
-    </script>
+    </script> -->
 </body>
 </html>
