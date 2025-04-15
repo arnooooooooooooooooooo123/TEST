@@ -14,21 +14,6 @@
    <script type="text/javascript"> 
 
         window.onload = function() { 
-
-             // 删除 cookie
-            function deleteCookie(name, path, domain) {
-                // 设置 Cookie 的过期时间为过去的时间
-                let expires = '; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
-                if (path) {
-                    expires += ` path=${path};`
-                }
-                if (domain) {
-                    expires += ` domain=${domain};`
-                }
-                // 删除 Cookie
-                document.cookie = `${name}=${expires}`
-            }
-
         
             Telegram.Login.init({bot_id: 8126791498, "request-access": "write"}, function(user) {
                 console.log('init', user)
@@ -51,13 +36,12 @@
                 Telegram.Login.open();
             } 
             // 退出登录
+            // ... existing code ...
             function logout() {
                 console.log("logout")
-                localStorage.clear();
-                sessionStorage.clear();
-                deleteCookie('stel_ssid', '/', '.telegram.org');
-                deleteCookie('stel_token', '/', '.telegram.org');
-            } 
+                Telegram.Auth.logout();
+            }
+            // ... existing code ...
             
             function onTelegramAuth(user) { 
                 // 向app传参
