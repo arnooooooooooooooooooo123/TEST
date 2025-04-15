@@ -14,21 +14,7 @@
    <script type="text/javascript"> 
 
         window.onload = function() { 
-            var user;
-             // 删除 cookie
-            function deleteCookie(name, path, domain) {
-                // 设置 Cookie 的过期时间为过去的时间
-                let expires = '; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
-                if (path) {
-                    expires += ` path=${path};`
-                }
-                if (domain) {
-                    expires += ` domain=${domain};`
-                }
-                // 删除 Cookie
-                document.cookie = `${name}=${expires}`
-            }
-
+             
         
             Telegram.Login.init({bot_id: 8126791498, "request-access": "write"}, function(user) {
                 console.log('init', user)
@@ -44,8 +30,7 @@
             }   
             document.getElementById('logout').onclick = function() {
                 logout()
-            }   
-            console.log(Telegram.Login.logout)         
+            }        
 
             // 打开弹窗
             function openLogin()  {     
@@ -56,24 +41,11 @@
             // 退出登录
             // ... existing code ...
             function logout() {
-                console.log(Telegram.Login.auth.checkClose)
-                console.log(user)
+                console.log(Telegram.Login.auth) 
                 // '/auth/logout?bot_id=547043436&origin=https%3A%2F%2Fcore.telegram.org&embed=1&request_access=write&return_to=https%3A%2F%2Fcore.telegram.org%2Fwidgets%2Flogin&hash=ea162c4fc040f291b3'
                 // location.href = 'https://oauth.telegram.org/auth/logout?bot_id=8126791498&origin=https://arnooooooooooooooooooo123.github.io&return_to=https://arnooooooooooooooooooo123.github.io/TEST/telegram-login.html&embed=1&request_access=write&hash="1612de073c08cbe1d98012f023a3535e9e7161d172cdd60c1cb85a5f4ab029ab"'
-            // console.log("Starting logout...");
-                // console.log("Clearing localStorage...");
-                // localStorage.clear();
-                // console.log("Clearing sessionStorage...");
-                // sessionStorage.clear();
-                // console.log("Deleting telegram cookies...");
-                // deleteCookie('stel_ssid', '/', '.telegram.org');
-                // deleteCookie('stel_token', '/', '.telegram.org');
-                // console.log("Logout complete");
-                
-                // deleteCookie('stel_ssid', '/', '.github.io');
-                // deleteCookie('stel_token', '/', '.github.io');
-            }
-            // ... existing code ...
+          
+            } 
             
             function onTelegramAuth(user) { 
                 // 向app传参
