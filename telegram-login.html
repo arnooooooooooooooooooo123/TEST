@@ -52,6 +52,7 @@
             } 
             // 退出登录
             function logout() {
+                console.log("logout")
                 localStorage.clear();
                 sessionStorage.clear();
                 deleteCookie('stel_ssid', '/', '.telegram.org');
