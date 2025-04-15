@@ -7,7 +7,7 @@
 </head>
 <body>
  
-    <button id="btn">login</button>
+    <!-- <button id="btn">login</button> -->
     <!-- <button id="logout">logout</button> -->
     <div id="widget_login"></div>
     <script async src="https://telegram.org/js/telegram-widget.js?22" data-onauth="onTelegramAuth(user)" data-request-access="write"></script>
@@ -18,7 +18,10 @@
                     // 接受 user信息
             window.addEventListener('message', (event) => {
                 // 验证来源 
-                console.log('Message from parent:', event.data);
+                console.log('Message from parent:', event);
+                if (event.data === 'login') {
+                    openLogin()
+                }
                 // 可以选择响应父页面
                 // event.source.postMessage('Hello from child!', event.origin);
             });
@@ -32,9 +35,9 @@
             }); 
 
 
-            document.getElementById('btn').onclick = function() {
-                openLogin()
-            }   
+            // document.getElementById('btn').onclick = function() {
+            //     openLogin()
+            // }   
             // document.getElementById('logout').onclick = function() {
             //     logout()
             // }        
@@ -58,6 +61,8 @@
                 if(window.flutter_inappwebview){
                     window.flutter_inappwebview.callHandler('NativeBridge', user);
                 }
+                // 向父页面传参
+                window.parent.postMessage('success', user)
             }
 
             
