@@ -11,56 +11,52 @@
     <!-- <button id="logout">logout</button> -->
     <div id="widget_login"></div>
     <script async src="https://telegram.org/js/telegram-widget.js?22" data-onauth="onTelegramAuth(user)" data-request-access="write"></script>
-   <script type="text/javascript"> 
-
-        window.onload = function() { 
-             
+   <script type="text/javascript">       
         
-            Telegram.Login.init({bot_id: 8126791498, "request-access": "write"}, function(user) {
-                console.log('init', user)
-                if (user) {
-                    user = user;
-                    onTelegramAuth(user)
-                }
-            }); 
-
-
-            document.getElementById('btn').onclick = function() {
-                openLogin()
-            }   
-            // document.getElementById('logout').onclick = function() {
-            //     logout()
-            // }        
-
-            // 打开弹窗
-            function openLogin()  {     
-                console.log("openLogin")            
-                Telegram.Login.open();
-            } 
-            
-            // 退出登录
-            // ... existing code ...
-            // function logout() {
-                // console.log(Telegram.Login.auth.checkClose) 
-                // '/auth/logout?bot_id=547043436&origin=https%3A%2F%2Fcore.telegram.org&embed=1&request_access=write&return_to=https%3A%2F%2Fcore.telegram.org%2Fwidgets%2Flogin&hash=ea162c4fc040f291b3'
-                // location.href = 'https://oauth.telegram.org/auth/logout?bot_id=8126791498&origin=https://arnooooooooooooooooooo123.github.io&return_to=https://arnooooooooooooooooooo123.github.io/TEST/telegram-login.html&embed=1&request_access=write&hash="1612de073c08cbe1d98012f023a3535e9e7161d172cdd60c1cb85a5f4ab029ab"'
-            // } 
-            
-            function onTelegramAuth(user) { 
-                // 向app传参
-                if(window.flutter_inappwebview){
-                    window.flutter_inappwebview.callHandler('NativeBridge', user);
-                }
+        Telegram.Login.init({bot_id: 8126791498, "request-access": "write"}, function(user) {
+            console.log('init', user)
+            if (user) {
+                user = user;
+                onTelegramAuth(user)
             }
+        }); 
 
-            // 接受 user信息
-            window.addEventListener('message', (event) => {
+
+        document.getElementById('btn').onclick = function() {
+            openLogin()
+        }   
+        // document.getElementById('logout').onclick = function() {
+        //     logout()
+        // }        
+
+        // 打开弹窗
+        function openLogin()  {     
+            console.log("openLogin")            
+            Telegram.Login.open();
+        } 
+        
+        // 退出登录
+        // ... existing code ...
+        // function logout() {
+            // console.log(Telegram.Login.auth.checkClose) 
+            // '/auth/logout?bot_id=547043436&origin=https%3A%2F%2Fcore.telegram.org&embed=1&request_access=write&return_to=https%3A%2F%2Fcore.telegram.org%2Fwidgets%2Flogin&hash=ea162c4fc040f291b3'
+            // location.href = 'https://oauth.telegram.org/auth/logout?bot_id=8126791498&origin=https://arnooooooooooooooooooo123.github.io&return_to=https://arnooooooooooooooooooo123.github.io/TEST/telegram-login.html&embed=1&request_access=write&hash="1612de073c08cbe1d98012f023a3535e9e7161d172cdd60c1cb85a5f4ab029ab"'
+        // } 
+        
+        function onTelegramAuth(user) { 
+            // 向app传参
+            if(window.flutter_inappwebview){
+                window.flutter_inappwebview.callHandler('NativeBridge', user);
+            }
+        }
+ 
+        // 接受 user信息
+        window.addEventListener('message', (event) => {
             // 验证来源 
-                console.log('Message from parent:', event.data);
-                // 可以选择响应父页面
-                // event.source.postMessage('Hello from child!', event.origin);
-            });
-        };  
+            console.log('Message from parent:', event.data);
+            // 可以选择响应父页面
+            // event.source.postMessage('Hello from child!', event.origin);
+        });
         
     </script>
  
