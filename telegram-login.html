@@ -27,7 +27,7 @@
             function onTelegramAuth(u){
                 const d=JSON.stringify(u);
                 try {   
-                    if(location.search){
+                    if(location.search || window.flutter_inappwebview){
                         window.flutter_inappwebview?.callHandler('NativeBridge',d);
                     } else {
                         window.parent?.postMessage({type:'success',data:d},'*');
