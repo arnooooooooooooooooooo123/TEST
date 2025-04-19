@@ -54,6 +54,9 @@
             loadScript('https://telegram.org/js/telegram-widget.js?22', { "data-onauth": "onTelegramAuth(user)", "data-request-access": "write" }, () => {
                 Telegram.Login.init({bot_id:8126791498,"request-access":"write"},u=>{u&&onTelegramAuth(u)});
                 console.log('web  init');
+                document.getElementById('btn-login').onclick=function(){
+                    try{Telegram.Login.open()}catch(e){console.error(e)}
+                }
              })
         }
 
