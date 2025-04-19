@@ -40,7 +40,7 @@
                 console.error(`脚本加载失败: ${src}`);
             };
 
-            document.head.appendChild(script);
+            document.body.appendChild(script);
         }
 
         var isApp=window.location.search?.includes('app');
