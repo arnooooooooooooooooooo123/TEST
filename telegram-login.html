@@ -25,6 +25,7 @@
             var isApp=window.location.search?.includes('app');
             // 只在web端调用
             if(!isApp){
+                console.log('web init')
                 Telegram.Login.init({bot_id:8126791498,"request-access":"write"},u=>{u&&onTelegramAuth(u)});
             }
 
@@ -36,9 +37,11 @@
                 const d=JSON.stringify(u);
                 try {
                     if(isApp){
+                        console.log('post app message')
                         window.flutter_inappwebview?.callHandler('NativeBridge',d);
                     } else {
-                        window.parent?.postMessage({type:'success',data:d},'*');
+                        console.log('post uweb message')
+                window.parent?.postMessage({type:'success',data:d},'*');
                     }
                 } catch (e) {
                     console.error(e)
